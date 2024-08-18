@@ -14,17 +14,19 @@ dotenv.config();
 
 const app = express();
 
-// app.use(cors({
-//     origin: "https://hotelfrontend-ruddy.vercel.app/",
-//     credentials:true
-
-// }))
 
 app.use(cors({
-    origin: "*",
+    origin: "https://hotelfrontend-ruddy.vercel.app", // No trailing slash
     credentials: true
 }));
 
+app.options('*', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "https://hotelfrontend-ruddy.vercel.app");
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.sendStatus(200);
+});
 app.use(express.json());
 
 app.use(cookieParser())
