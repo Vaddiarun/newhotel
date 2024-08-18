@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: "https://hotelfrontendsoft.netlify.app/",
+    origin: "https://hotelfrontend-ruddy.vercel.app/",
     credentials:true
 
 }))
