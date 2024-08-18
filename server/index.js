@@ -16,7 +16,7 @@ const app = express();
 
 
 app.use(cors({
-    origin: "https://newhotel.vercel.app",
+    origin: "https://hotelfrontend-ruddy.vercel.app",
     credentials:true
 
 }))
