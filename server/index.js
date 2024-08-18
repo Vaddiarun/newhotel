@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: "https://hotelfrontend-ruddy.vercel.app/",
+    origin: "https://newhotel.vercel.app",
     credentials:true
 
 }))
