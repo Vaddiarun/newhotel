@@ -15,7 +15,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: "https://newhotel.vercel.app",
+    origin: "http://localhost:5173",
     credentials: true
 }))
 
@@ -36,7 +36,9 @@ const connectDB = async () => {
 connectDB();
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
-
+app.get("/",(req,res)=>{
+    return res.send("hi");
+})
 app.use("/api/v1/menu", menuRoutes);
 app.use("/api/v1/categories", CategoryRoutes);
 app.use("/api/v1/orders", orderRoutes);

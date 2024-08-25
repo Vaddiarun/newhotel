@@ -17,7 +17,14 @@ export default function AdminOrders() {
   return (
     <div className="min-h-screen bg-white">
       <AdminHeader />
-      <h1>Orders</h1>
+      <h1 className="text-center mt-4">Orders</h1>
+      {orders.length == 0 ? (
+        <div className="lg:w-[1400px] lg:ml-28">
+          <img src="https://cdn.dribbble.com/users/429792/screenshots/3649946/media/bb28392f6e913c06c56495260d0204a6.png" />
+        </div>
+      ) : (
+        ""
+      )}
       {orders.map((each) => (
         <div>
           <h1>Table : {each.table}</h1>

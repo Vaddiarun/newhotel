@@ -9,6 +9,10 @@ const stockschema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    category: {
+        type: String,
+        required: true,
+    },
    
 },{timestamps:true})
 
