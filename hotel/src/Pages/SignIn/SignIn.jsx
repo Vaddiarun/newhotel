@@ -39,6 +39,7 @@ export default function SignIn() {
       const { data } = await configuredUrl.post("/user/signin", {
         formdata,
       });
+      console.log(data);
       if (data.success === false) {
         dispatch(signInFailure(data.message));
       }
