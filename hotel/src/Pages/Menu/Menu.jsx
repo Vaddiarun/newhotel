@@ -88,7 +88,7 @@ export default function Menu() {
         )}
       </div>
       {menuItems && menuItems.length > 0 ? (
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {menuItems
             .filter((each) => each.category === active)
             .map((each, id) => (
@@ -96,6 +96,11 @@ export default function Menu() {
                 key={id}
                 className="bg-white p-4 rounded-lg shadow-lg text-gray-800"
               >
+                <img
+                  src={each.image}
+                  alt={each.title}
+                  className="w-[500px] h-[380px] lg:w-[500px]"
+                />
                 <h1 className="text-xl font-semibold mb-2">{each.title}</h1>
                 <p className="text-lg font-medium mb-1">
                   ₹ {each.amount} rupees
