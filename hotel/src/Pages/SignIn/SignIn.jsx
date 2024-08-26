@@ -17,14 +17,12 @@ export default function SignIn() {
     email: "",
     password: "",
   });
-  const { loading, error: errorMessage } = useSelector((state) => state.user);
   const handleChange = (e) => {
     setFormData({
       ...formdata,
       [e.target.id]: e.target.value.trim(),
     });
   };
-  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -35,26 +33,21 @@ export default function SignIn() {
       return;
     }
     try {
-      dispatch(signInstart());
       const { data } = await configuredUrl.post("/user/signin", {
         formdata,
       });
       console.log(data);
-      if (data.success === false) {
-        dispatch(signInFailure(data.message));
-      }
       if (data.success === true) {
-        dispatch(signInSuccess(data));
         console.log("yes");
         Cookies.set("access_token", data.token, { expires: 7, path: "" });
         navigate("/admin");
       }
     } catch (e) {
-      seterror("invilder Credentials");
-      dispatch(signInFailure(e.message));
+      console.log(e);
+      seterror("Invalid Credentials");
     }
   };
-  const [pass, setpass] = useState();
+  const [pass, setpass] = useState(false);
   const handlepass = () => {
     setpass(!pass);
   };

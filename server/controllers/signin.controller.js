@@ -18,10 +18,12 @@ export const signIn = async (req, res) => {
         }
         const token = jwt.sign({ id: validUser._id, isAdmin: validUser.isAdmin }, process.env.JWT)
         const { password: pass, ...rest } = validUser._doc;
+        console.log(rest)
         res
             .status(200)
             .json({ rest, token,success:true });
     } catch (err) {
+        console.log(err.message)
         res.status(500).json({ message: err.message,success:false })
     }
 }    

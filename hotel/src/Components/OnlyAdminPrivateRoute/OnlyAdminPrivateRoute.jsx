@@ -7,9 +7,5 @@ import Cookies from "js-cookie";
 export default function OnlyAdminPrivateRoute() {
   const { currentUser } = useSelector((state) => state.user);
   const token = Cookies.get("access_token");
-  return currentUser && currentUser.isAdmin && token ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/login" />
-  );
+  return token ? <Outlet /> : <Navigate to="/login" />;
 }

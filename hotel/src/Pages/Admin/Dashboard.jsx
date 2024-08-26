@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AdminHeader from "../../Components/AdminHeaader/AdminHeader";
 import CanvasJSReact from "@canvasjs/react-charts";
 import configuredUrl from "../../../utils/request/request";
+import Cookies from "js-cookie";
 
 export default function Dashboard() {
   const [dashData, setDashData] = useState([]);
@@ -11,8 +12,12 @@ export default function Dashboard() {
 
   useEffect(() => {
     const fetchDashData = async () => {
+      const access_token = Cookies.get("access_token");
       try {
-        const { data } = await configuredUrl.get("/dashboard/getAllData");
+        const { data } = await configuredUrl.post("/dashboard/getAllData", {
+          access_token,
+        });
+        console.log(data);
         setDashData(data);
         let options = {
           animationEnabled: true,

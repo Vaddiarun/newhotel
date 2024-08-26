@@ -4,6 +4,6 @@ import { verifyToken } from '../utils/verifyAdmin.js';
 
 const router = express.Router()
 
-router.get("/getAllData",verifyToken, getAllData);
+router.post("/getAllData",verifyToken, getAllData);
 
 export default router;

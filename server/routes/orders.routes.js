@@ -5,8 +5,8 @@ import { verifyToken } from '../utils/verifyAdmin.js';
 const router = express.Router()
 
 router.post("/addorder", addNewOrder);
-router.get("/activeorders",verifyToken, getActiveOrders);
-router.get("/getSingleOrder/:id", verifyToken,getSingleOrder);
+router.post("/activeorders",verifyToken, getActiveOrders);
+router.post("/getSingleOrder/:id", verifyToken,getSingleOrder);
 router.delete("/orderComplete/:id", verifyToken,deleteOrder);
 
 export default router;

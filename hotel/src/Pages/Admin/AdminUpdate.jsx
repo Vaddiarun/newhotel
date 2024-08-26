@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AdminHeader from "../../Components/AdminHeaader/AdminHeader";
 import configuredUrl from "../../../utils/request/request";
+import Cookies from "js-cookie";
 
 export default function AdminUpdate() {
   const { title } = useParams();
@@ -29,6 +30,7 @@ export default function AdminUpdate() {
       ...item,
       ...formData,
       available,
+      access_token: Cookies.get("access_token"),
     });
     if (data.success) {
       setSuccess(true);

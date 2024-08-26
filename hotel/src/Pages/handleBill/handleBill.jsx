@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import configuredUrl from "../../../utils/request/request";
+import Cookies from "js-cookie";
 
 export default function HandleBill() {
   const [order, setOrder] = useState({});
@@ -19,8 +20,9 @@ export default function HandleBill() {
     const fetchItem = async () => {
       setLoading(true);
       try {
-        const { data } = await configuredUrl.get(
-          `/orders/getSingleOrder/${id}`
+        const { data } = await configuredUrl.post(
+          `/orders/getSingleOrder/${id}`,
+          { access_token: Cookies.get("access_token") }
         );
         setOrder(data);
         console.log(data);
@@ -51,7 +53,10 @@ export default function HandleBill() {
   const handleOrderComplete = async () => {
     try {
       const { data } = await configuredUrl.delete(
-        `/orders/orderComplete/${order._id}`
+        `/orders/orderComplete/${order._id}`,
+        {
+          access_token: Cookies.get("access_token"),
+        }
       );
       console.log(data);
       if (data.success) {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminHeader from "../../Components/AdminHeaader/AdminHeader";
 import configuredUrl from "../../../utils/request/request";
+import Cookies from "js-cookie";
 
 export default function AdminCreate() {
   const [formData, setFormData] = useState({});
@@ -17,6 +18,7 @@ export default function AdminCreate() {
       ...formData,
       available: available,
       category: category,
+      access_token: Cookies.get("access_token"),
     });
     if (data.success) {
       setSuccess(true);

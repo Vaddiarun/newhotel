@@ -6,4 +6,4 @@ const router = express.Router();
 router.post("/addStock", addStock);  
 router.get("/getStock", getStock);
 
-export default router;
+export default router;    

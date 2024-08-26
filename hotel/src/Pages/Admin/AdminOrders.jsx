@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AdminHeader from "../../Components/AdminHeaader/AdminHeader";
 import configuredUrl from "../../../utils/request/request";
+import Cookies from "js-cookie";
 
 export default function AdminOrders() {
   const [orders, setOrders] = React.useState([]);
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const { data } = await configuredUrl.get("/orders/activeorders");
+      const { data } = await configuredUrl.post("/orders/activeorders", {
+        access_token: Cookies.get("access_token"),
+      });
       setOrders(data);
     };
     fetchOrders();
